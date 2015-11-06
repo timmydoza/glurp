@@ -1,0 +1,26 @@
+{
+  "name": "glurp",
+  "version": "1.0.0",
+  "description": "An easy to use framework for creating quick and simple HTTP servers in node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timmydoza/glurp.git"
+  },
+  "keywords": [
+    "glurp",
+    "node",
+    "server",
+    "http",
+    "framework"
+  ],
+  "author": "timmydoza@gmail.com, matthew.r.ringel@gmail.com, isabellaorgan@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timmydoza/glurp/issues"
+  },
+  "homepage": "https://github.com/timmydoza/glurp#readme"
+}
