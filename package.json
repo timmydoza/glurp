@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/timmydoza/glurp.git"
+    "url": "./node_modules/mocha/bin/mocha test"
   },
   "keywords": [
     "glurp",
