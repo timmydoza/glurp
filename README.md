@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/timmydoza/glurp.svg)](https://travis-ci.org/timmydoza/glurp)
 # glurp
 An easy to use framework for creating quick and simple HTTP servers in node.js
 
