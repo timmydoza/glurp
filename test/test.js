@@ -45,4 +45,10 @@ describe('our router', function() {
     expect(cbCalled.end).to.eql(true);
   });
 
+  describe('REST handling', function() {
+    beforeEach(function() {
+      
+    });
+  });
+
 });
