@@ -44,13 +44,9 @@ gulp.task('mocha:test', function () {
 		reporter: 'nyan'}));
 });
 
-gulp.task('watch', function() {
-  gulp.watch(['./**/*', '!./package.json'], ['jshint', 'mocha']);
-});
-
 gulp.task('jshint', ['jshint:test', 'jshint:app']);
 gulp.task('mocha', ['mocha:test']);
-gulp.task('default', ['jscs', 'jshint', 'watch']);
+gulp.task('default', ['jscs', 'jshint']);
 
 
 
