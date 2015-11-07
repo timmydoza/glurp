@@ -5,7 +5,7 @@ var mocha = require('gulp-mocha');
 var expect = require('chai').expect;
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
-var stylish = require('gulp-jscs-stylish')
+var stylish = require('gulp-jscs-stylish');
 var appFiles = ['glurp.js', './lib/**/*.js'];
 var testFiles = ['./test/**/*.js'];
 
