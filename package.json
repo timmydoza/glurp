@@ -22,5 +22,13 @@
   "bugs": {
     "url": "https://github.com/timmydoza/glurp/issues"
   },
-  "homepage": "https://github.com/timmydoza/glurp#readme"
+  "homepage": "https://github.com/timmydoza/glurp#readme",
+  "devDependencies": {
+    "chai": "^3.4.0",
+    "chai-http": "^1.0.0",
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^1.12.0",
+    "gulp-mocha": "^2.1.3",
+    "mocha": "^2.3.3"
+  }
 }
