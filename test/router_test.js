@@ -45,6 +45,34 @@ describe('our router', function() {
     expect(cbCalled.end).to.eql(true);
   });
 
+  it('should serve a test.txt file', function(done) {
+    var cbCalled = {
+      writeHead: false,
+      write: false,
+      end: false
+    };
+    var req = {
+      url: 'http://localhost.com/test.txt',
+      method: 'GET'
+    };
+    var res = {
+      writeHead: function(status, headers) {
+        cbCalled.writeHead = true;
+        expect(status).to.eql(404);
+        expect(headers).to.eql({'Content-Type': 'text/plain'});
+      },
+      write: function(text) {
+        cbCalled.write = true;
+        expect(text).to.eql('test text');
+      },
+      end: function() {
+        cbCalled.end = true;
+      }
+    };
+    debugger;
+    this.router.route(req, res, './public', done);
+  });
+
   describe('REST handling', function() {
     beforeEach(function() {
       this.router = new Router();
