@@ -40,8 +40,8 @@ gulp.task('jscs', function() {
 gulp.task('mocha:test', function () {
 	return gulp.src(testFiles)
 	.pipe(mocha({
-		read:false,
-		reporter: 'nyan'}));
+		// read:false,
+		reporter: 'spec'}));
 });
 
 gulp.task('jshint', ['jshint:test', 'jshint:app']);
