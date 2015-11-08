@@ -1,5 +1,6 @@
 var chai = require('chai');
 var expect = chai.expect;
+var fs = require('fs');
 var Router = require(__dirname + '/../lib/router');
 
 describe('our router', function() {
@@ -43,34 +44,6 @@ describe('our router', function() {
     expect(cbCalled.writeHead).to.eql(true);
     expect(cbCalled.write).to.eql(true);
     expect(cbCalled.end).to.eql(true);
-  });
-
-  it('should serve a test.txt file', function(done) {
-    var cbCalled = {
-      writeHead: false,
-      write: false,
-      end: false
-    };
-    var req = {
-      url: 'http://localhost.com/test.txt',
-      method: 'GET'
-    };
-    var res = {
-      writeHead: function(status, headers) {
-        cbCalled.writeHead = true;
-        expect(status).to.eql(404);
-        expect(headers).to.eql({'Content-Type': 'text/plain'});
-      },
-      write: function(text) {
-        cbCalled.write = true;
-        expect(text).to.eql('test text');
-      },
-      end: function() {
-        cbCalled.end = true;
-      }
-    };
-    debugger;
-    this.router.route(req, res, './public', done);
   });
 
   describe('REST handling', function() {
@@ -160,6 +133,125 @@ describe('our router', function() {
       expect(cbCalled).to.eql(true);
     });
 
+
+  });
+
+  describe('File Serving', function() {
+    beforeEach(function() {
+      this.router = new Router();
+    });
+
+    it('should serve a test.txt file', function(done) {
+      var cbCalled = {
+        writeHead: false,
+        write: false,
+        end: false
+      };
+      var req = {
+        url: 'http://localhost.com/test.txt',
+        method: 'GET'
+      };
+      var res = {
+        writeHead: function(status, headers) {
+          cbCalled.writeHead = true;
+          expect(status).to.eql(200);
+          expect(headers).to.eql({'Content-Type': 'text/plain'});
+        },
+        write: function(text) {
+          cbCalled.write = true;
+          expect(text.toString()).to.eql('test text\n');
+        },
+        end: function() {
+          cbCalled.end = true;
+          done();
+        }
+      };
+      this.router.route(req, res, './public');
+    });
+
+    it('should serve a test.html file', function(done) {
+      var cbCalled = {
+        writeHead: false,
+        write: false,
+        end: false
+      };
+      var req = {
+        url: 'http://localhost.com/index.html',
+        method: 'GET'
+      };
+      var res = {
+        writeHead: function(status, headers) {
+          cbCalled.writeHead = true;
+          expect(status).to.eql(200);
+          expect(headers).to.eql({'Content-Type': 'text/html'});
+        },
+        write: function(text) {
+          cbCalled.write = true;
+          expect(text).to.eql(fs.readFileSync(__dirname + '/../public/index.html'));
+        },
+        end: function() {
+          cbCalled.end = true;
+          done();
+        }
+      };
+      this.router.route(req, res, './public');
+    });
+
+    it('should serve a .css file', function(done) {
+      var cbCalled = {
+        writeHead: false,
+        write: false,
+        end: false
+      };
+      var req = {
+        url: 'http://localhost.com/css/base.css',
+        method: 'GET'
+      };
+      var res = {
+        writeHead: function(status, headers) {
+          cbCalled.writeHead = true;
+          expect(status).to.eql(200);
+          expect(headers).to.eql({'Content-Type': 'text/css'});
+        },
+        write: function(text) {
+          cbCalled.write = true;
+          expect(text).to.eql(fs.readFileSync(__dirname + '/../public/css/base.css'));
+        },
+        end: function() {
+          cbCalled.end = true;
+          done();
+        }
+      };
+      this.router.route(req, res, './public');
+    });
+
+    it('should serve a test.js file', function(done) {
+      var cbCalled = {
+        writeHead: false,
+        write: false,
+        end: false
+      };
+      var req = {
+        url: 'http://localhost.com/test.js',
+        method: 'GET'
+      };
+      var res = {
+        writeHead: function(status, headers) {
+          cbCalled.writeHead = true;
+          expect(status).to.eql(200);
+          expect(headers).to.eql({'Content-Type': 'application/javascript'});
+        },
+        write: function(text) {
+          cbCalled.write = true;
+          expect(text).to.eql(fs.readFileSync(__dirname + '/../public/test.js'));
+        },
+        end: function() {
+          cbCalled.end = true;
+          done();
+        }
+      };
+      this.router.route(req, res, './public');
+    });
 
   });
 
