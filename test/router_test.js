@@ -141,7 +141,7 @@ describe('our router', function() {
       this.router = new Router();
     });
 
-    it('should serve a test.txt file', function(done) {
+    it('should serve a txt file', function(done) {
       var cbCalled = {
         writeHead: false,
         write: false,
@@ -169,7 +169,7 @@ describe('our router', function() {
       this.router.route(req, res, './public');
     });
 
-    it('should serve a test.html file', function(done) {
+    it('should serve an html file', function(done) {
       var cbCalled = {
         writeHead: false,
         write: false,
@@ -197,7 +197,7 @@ describe('our router', function() {
       this.router.route(req, res, './public');
     });
 
-    it('should serve a .css file', function(done) {
+    it('should serve a css file', function(done) {
       var cbCalled = {
         writeHead: false,
         write: false,
@@ -225,7 +225,7 @@ describe('our router', function() {
       this.router.route(req, res, './public');
     });
 
-    it('should serve a test.js file', function(done) {
+    it('should serve a javascript file', function(done) {
       var cbCalled = {
         writeHead: false,
         write: false,
@@ -244,6 +244,34 @@ describe('our router', function() {
         write: function(text) {
           cbCalled.write = true;
           expect(text).to.eql(fs.readFileSync(__dirname + '/../public/test.js'));
+        },
+        end: function() {
+          cbCalled.end = true;
+          done();
+        }
+      };
+      this.router.route(req, res, './public');
+    });
+
+    it('should serve a jpeg file', function(done) {
+      var cbCalled = {
+        writeHead: false,
+        write: false,
+        end: false
+      };
+      var req = {
+        url: 'http://localhost.com/test.jpg',
+        method: 'GET'
+      };
+      var res = {
+        writeHead: function(status, headers) {
+          cbCalled.writeHead = true;
+          expect(status).to.eql(200);
+          expect(headers).to.eql({'Content-Type': 'image/jpeg'});
+        },
+        write: function(text) {
+          cbCalled.write = true;
+          // expect(text).to.eql(fs.readFileSync(__dirname + '/../public/test.js'));
         },
         end: function() {
           cbCalled.end = true;
