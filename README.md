@@ -37,16 +37,20 @@ Also includes:
 # req.data + string
 Responds with data received from a POST request.
 
-<!-- ```javascript
+```javascript
+    res.sendFile = function(path) {
+      router.serveFile(path, req, res, publicDir);
+    };
+
     if (req.method === 'POST') {
       req.on('data', function(data) {
         req.data = data.toString();
         router.route(req, res);
       });
       return;
-    };
+    }
 
-    ``` -->
+    ```
     
 # Response Object
 Uses same methods and properties as described in Node Docs.<br>
