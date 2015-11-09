@@ -65,14 +65,14 @@ glurp.set('POST', '/testpost', function(req, res) {
 # res.sendHTML(string)
 Takes a string and responds with one HTML file per callback.
 
-```javascript
+<!-- ```javascript
     res.sendHtml = function(content) {
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(content);
       res.end();
     };
 
-    ```
+    ``` -->
 # res.sendFile(string)
 
 ```javascript
