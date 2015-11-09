@@ -21,6 +21,12 @@ That's it! Your server should be running!
 
 # glurp.set(method, route, callback) 
 Binds a callback function to a route for a get request at '/', responds with a file from the desgnated directory.
+```javascript
+Router.prototype.set = function(method, route, cb) {
+  if (!this.routes[method]) throw method + ' is not a valid HTTP method.';
+  this.routes[method][route] = cb;
+};
+```
 
 # glurp.start(port, publicDirectory)
 Automates starting a server with a specified port and reference directory. (See example above "Getting Started with Glurp")
@@ -31,6 +37,15 @@ Uses same methods and properties as described in Node Docs.<br>
 Also includes:
 # req.data + string
 Responds with data received from a POST request.
+```javascript
+    if (req.method === 'POST') {
+      req.on('data', function(data) {
+        req.data = data.toString();
+        router.route(req, res);
+      });
+      return;
+    }
+    ```
 
 # Response Object
 Uses same methods and properties as described in Node Docs.<br>
@@ -38,10 +53,22 @@ Uses same methods and properties as described in Node Docs.<br>
 Also includes:
 # res.send(string) 
 Takes a string and responds with text.
-This function automates writeHead, write and end for the user.
+res.send automates writeHead, write and end for the user.
+```javascript
+glurp.set('POST', '/testpost', function(req, res) { 
+  res.send("POST request received.  Data is " + req.data);
+});
+```
 
 # res.sendHTML(string)
 Takes a string and responds with one HTML file per callback.
+```javascript
+    res.sendHtml = function(content) {
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write(content);
+      res.end();
+    };
+    ```
 
 # res.sendFile(string) 
 ```javascript
