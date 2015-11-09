@@ -36,6 +36,7 @@ Uses same methods and properties as described in Node Docs.<br>
 Also includes:
 # req.data + string
 Responds with data received from a POST request.
+
 ```javascript
     if (req.method === 'POST') {
       req.on('data', function(data) {
@@ -52,6 +53,7 @@ Also includes:
 # res.send(string) 
 Takes a string and responds with text.
 res.send automates writeHead, write and end for the user.
+
 ```javascript
 glurp.set('POST', '/testpost', function(req, res) { 
   res.send("POST request received.  Data is " + req.data);
@@ -59,6 +61,7 @@ glurp.set('POST', '/testpost', function(req, res) {
 ```
 # res.sendHTML(string)
 Takes a string and responds with one HTML file per callback.
+
 ```javascript
     res.sendHtml = function(content) {
       res.writeHead(200, {'Content-Type': 'text/html'});
@@ -66,7 +69,8 @@ Takes a string and responds with one HTML file per callback.
       res.end();
     };
     ```
-# res.sendFile(string) 
+# res.sendFile(string)
+
 ```javascript
 glurp.set('GET', '/', function(req, res) {
   res.sendFile('/index.html'); 
