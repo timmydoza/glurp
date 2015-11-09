@@ -27,7 +27,6 @@ Router.prototype.set = function(method, route, cb) {
   this.routes[method][route] = cb;
 };
 ```
-
 # glurp.start(port, publicDirectory)
 Automates starting a server with a specified port and reference directory. (See example above "Getting Started with Glurp")
 
@@ -44,9 +43,8 @@ Responds with data received from a POST request.
         router.route(req, res);
       });
       return;
-    }
+    };
     ```
-
 # Response Object
 Uses same methods and properties as described in Node Docs.<br>
 <a href="https://nodejs.org/api/http.html#http_class_http_serverresponse">Class: http.ServerResponse</a><br>
@@ -59,7 +57,6 @@ glurp.set('POST', '/testpost', function(req, res) {
   res.send("POST request received.  Data is " + req.data);
 });
 ```
-
 # res.sendHTML(string)
 Takes a string and responds with one HTML file per callback.
 ```javascript
@@ -69,7 +66,6 @@ Takes a string and responds with one HTML file per callback.
       res.end();
     };
     ```
-
 # res.sendFile(string) 
 ```javascript
 glurp.set('GET', '/', function(req, res) {
