@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/timmydoza/glurp.svg)](https://travis-ci.org/timmydoza/glurp)
 
-# Title 
-Glurp - An easy to use framework for creating quick and simple HTTP servers in node.js.
+# GLURP
+ An easy to use framework for creating quick and simple HTTP servers in node.js.
 
 # Introduction
 
@@ -21,7 +21,12 @@ That's it! Your server should be running!
 
 # glurp.set(method, route, callback) 
 Binds a callback function to a route for a get request at '/', responds with a file from the desgnated directory.
-
+```javascript
+Router.prototype.set = function(method, route, cb) {
+  if (!this.routes[method]) throw method + ' is not a valid HTTP method.';
+  this.routes[method][route] = cb;
+};
+```
 # glurp.start(port, publicDirectory)
 Automates starting a server with a specified port and reference directory. (See example above "Getting Started with Glurp")
 
@@ -38,16 +43,24 @@ Uses same methods and properties as described in Node Docs.<br>
 Also includes:
 # res.send(string) 
 Takes a string and responds with text.
-This function automates writeHead, write and end for the user.
+res.send automates writeHead, write and end for the user.
 
+```javascript
+glurp.set('POST', '/testpost', function(req, res) { 
+  res.send("POST request received.  Data is " + req.data);
+});
+
+```
 # res.sendHTML(string)
 Takes a string and responds with one HTML file per callback.
 
-# res.sendFile(string) 
+# res.sendFile(string)
+
 ```javascript
 glurp.set('GET', '/', function(req, res) {
   res.sendFile('/index.html'); 
 });
+
 ```
 
 
