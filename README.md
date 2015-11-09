@@ -26,15 +26,15 @@ Binds a callback function to a route for a get request at '/', responds with a f
 Automates starting a server with a specified port and reference directory. (See example above "Getting Started with Glurp")
 
 # Request Object
-Uses same methods and properties as described in Node Docs.
-<a href="https://nodejs.org/api/http.html#http_http_incomingmessage">Class: http.ClientRequest</a>
+Uses same methods and properties as described in Node Docs.<br>
+<a href="https://nodejs.org/api/http.html#http_http_incomingmessage">Class: http.ClientRequest</a><br>
 Also includes:
 # req.data + string
 Responds with data received from a POST request.
 
 # Response Object
-Uses same methods and properties as described in Node Docs.
-<a href="https://nodejs.org/api/http.html#http_class_http_serverresponse">Class: http.ServerResponse</a>
+Uses same methods and properties as described in Node Docs.<br>
+<a href="https://nodejs.org/api/http.html#http_class_http_serverresponse">Class: http.ServerResponse</a><br>
 Also includes:
 # res.send(string) 
 Takes a string and responds with text.
