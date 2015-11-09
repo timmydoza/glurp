@@ -45,6 +45,7 @@ Responds with data received from a POST request.
       });
       return;
     };
+
     ```
 # Response Object
 Uses same methods and properties as described in Node Docs.<br>
@@ -58,6 +59,7 @@ res.send automates writeHead, write and end for the user.
 glurp.set('POST', '/testpost', function(req, res) { 
   res.send("POST request received.  Data is " + req.data);
 });
+
 ```
 # res.sendHTML(string)
 Takes a string and responds with one HTML file per callback.
@@ -68,6 +70,7 @@ Takes a string and responds with one HTML file per callback.
       res.write(content);
       res.end();
     };
+
     ```
 # res.sendFile(string)
 
@@ -75,6 +78,7 @@ Takes a string and responds with one HTML file per callback.
 glurp.set('GET', '/', function(req, res) {
   res.sendFile('/index.html'); 
 });
+
 ```
 
 
