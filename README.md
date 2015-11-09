@@ -37,19 +37,6 @@ Also includes:
 # req.data + string
 Responds with data received from a POST request.
 
-```javascript
-    res.sendFile = function(path) {
-      router.serveFile(path, req, res, publicDir);
-    };
-
-    if (req.method === 'POST') {
-      req.on('data', function(data) {
-        req.data = data.toString();
-        router.route(req, res);
-      });
-
-    ```
-
 # Response Object
 Uses same methods and properties as described in Node Docs.<br>
 <a href="https://nodejs.org/api/http.html#http_class_http_serverresponse">Class: http.ServerResponse</a><br>
@@ -67,14 +54,14 @@ glurp.set('POST', '/testpost', function(req, res) {
 # res.sendHTML(string)
 Takes a string and responds with one HTML file per callback.
 
-<!-- ```javascript
+```javascript
     res.sendHtml = function(content) {
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(content);
       res.end();
     };
 
-    ``` -->
+    ```
 # res.sendFile(string)
 
 ```javascript
