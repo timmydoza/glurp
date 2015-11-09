@@ -1,5 +1,6 @@
 var chai = require('chai');
 var expect = chai.expect;
+var fs = require('fs');
 var Router = require(__dirname + '/../lib/router');
 
 describe('our router', function() {
