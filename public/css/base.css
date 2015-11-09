@@ -9,12 +9,6 @@ body {
 	line-height: 1.5;
 }
 
-blockquote {
-	padding-left: 1em;
-	border-left: 3px solid #ccc;
-	font-size:  1.5em;
-	color: green;
-}
 #glurp-header {
 	font-family: 'Chewy', cursive;
   	font-size: 56px;
@@ -29,7 +23,7 @@ h1 {
   	color: #0d1c33;
 }
 h2 {
-	text-align: left;
+	text-align: center;
 	letter-spacing: 5px;
 	font-family: Raleway;
   	font-size: 18px;
@@ -56,7 +50,7 @@ p {
 	width: 75%;
 	margin-left: 20px;
 	padding-left: 20px;
-	text-align: left;
+	text-align: center;
 	}
 
 #footer {
