@@ -47,11 +47,9 @@ Responds with data received from a POST request.
         req.data = data.toString();
         router.route(req, res);
       });
-      return;
-    }
 
     ```
-    
+
 # Response Object
 Uses same methods and properties as described in Node Docs.<br>
 <a href="https://nodejs.org/api/http.html#http_class_http_serverresponse">Class: http.ServerResponse</a><br>
