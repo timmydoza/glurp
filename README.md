@@ -20,16 +20,8 @@ Run your JavaScript file with node.js and that's it!! You now have an HTTP serve
 ## glurp METHODS
 
 ### glurp.set(method, route, callback) 
-Binds a callback function to an HTTP request method and route.
-```javascript
-var glurp = require('');
+Binds a callback function to an HTTP request method and route.  `glurp.set` accepts strings for the first two arguments.
 
-glurp.set('GET', '/home', function(req, res) {
-	res.send('Welcome to the home route!');
-});
-
-glurp.start(3000, './');
-```
 ### glurp.start(port, publicDirectory)
 Starts an HTTP server with a specified port and directory for hosting static files. 
 
