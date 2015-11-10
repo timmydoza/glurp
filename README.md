@@ -20,7 +20,7 @@ Run your JavaScript file with node.js and that's it!! You now have an HTTP serve
 ## glurp METHODS
 
 ### glurp.set(method, route, callback) 
-Binds a callback function to a route and HTTP method.
+Binds a callback function to an HTTP request method and route.
 ```javascript
 var glurp = require('');
 
@@ -29,10 +29,9 @@ glurp.set('GET', '/home', function(req, res) {
 });
 
 glurp.start(3000, './');
-};
 ```
 ### glurp.start(port, publicDirectory)
-Starts an HTTP server with a specified port and directory for hosting static files. (See example above "Getting Started with glurp")
+Starts an HTTP server with a specified port and directory for hosting static files. 
 
 ## Request Object
 The glurp request object has the same methods and properties as the node.js <a href="https://nodejs.org/api/http.html#http_http_incomingmessage">http.IncomingMessage</a> class, in addition to the following:
@@ -41,7 +40,7 @@ The glurp request object has the same methods and properties as the node.js <a h
 This property stores the data received from an HTTP request as a string.
 
 ## Response Object
-The glurp response object has the same methods and properties as the node.js <a href="https://nodejs.org/api/http.html#http_http_serverresponse">http.ServerResponse</a> class, in addition to the following:
+The glurp response object has the same methods and properties as the node.js <a href="https://nodejs.org/api/http.html#http_class_http_serverresponse">http.ServerResponse</a> class, in addition to the following:
 ### res.send(string) 
 Accepts a string and sends it to the client as plain text.  
 
@@ -57,7 +56,7 @@ Accepts a file name as a string and sends it to the server with the appropriate 
 var glurp = require('glurp');
 
 glurp.set('GET', '/', function(req, res) {
-	res.sendFile('/index.html');//will look in /static
+	res.sendFile('/index.html'); //glurp will look in ./static for index.html
 });
 
 glurp.set('POST', '/testpost', function(req, res) {
