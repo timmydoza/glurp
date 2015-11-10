@@ -9,7 +9,7 @@ Welcome to Glurp - A RESTful API framework for Node using the HTTP module.  Glur
 
 
 ## Getting Started with glurp
-First, install glurp by running `npm install glurp --save` in your project directory.  Then, open a new JavaScript file and add these two lines of code:
+First, install glurp by running `npm install --save glurp` in your project directory.  Then, open a new JavaScript file and add these two lines of code:
 ```javascript
 var glurp = require('glurp');
 
@@ -36,7 +36,7 @@ The glurp response object has the same methods and properties as the node.js <a 
 ### res.send(string) 
 Accepts a string and sends it to the client as plain text.  
 
-### res.sendHTML(string)
+### res.sendHtml(string)
 Accepts a string and sends it to the client to be rendered as HTML. 
 
 ### res.sendFile(string)
