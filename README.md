@@ -20,10 +20,10 @@ Run your JavaScript file with node.js and that's it!! You now have an HTTP serve
 ## glurp METHODS
 
 ### glurp.set(method, route, callback) 
-Binds a callback function to an HTTP request method and route.  `glurp.set` accepts strings for the first two arguments.
+Binds a callback function to an HTTP request method and route.  Accepts strings for the first two arguments.
 
 ### glurp.start(port, publicDirectory)
-Starts an HTTP server with a specified port and directory for hosting static files. 
+Starts an HTTP server with a specified port and directory for hosting static files. Accepts an integer and a string as arguments.
 
 ## Request Object
 The glurp request object has the same methods and properties as the node.js <a href="https://nodejs.org/api/http.html#http_http_incomingmessage">http.IncomingMessage</a> class, in addition to the following:
