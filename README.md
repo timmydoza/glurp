@@ -1,67 +1,68 @@
 [![Build Status](https://travis-ci.org/timmydoza/glurp.svg)](https://travis-ci.org/timmydoza/glurp)
 
-# GLURP
+# glurp
  An easy to use framework for creating quick and simple HTTP servers in node.js.
 
-# Introduction
+## Introduction
 
-Welcome to Glurp - A RESTful API framework for Node using the HTTP module, with libraries that automate creating a server and router that can handle multiple route requests and easily respond with multiple file types, icluding HTML, CSS, JPEG and JS.
+Welcome to Glurp - A RESTful API framework for Node using the HTTP module.  Glurp is a library that automates creating a node HTTP server and router that can handle multiple route requests and easily respond with multiple file types, including HTML, CSS, JPEG and JS.
 
-See included code examples.
 
-# Getting Started with Glurp
+## Getting Started with glurp
+First, install glurp by running `npm install --save glurp` in your project directory.  Then, open a new JavaScript file and add these two lines of code:
 ```javascript
-var glurp = require(__dirname + '/index');
+var glurp = require('glurp');
 
-glurp.start(3000, __dirname + '/public'); 
+glurp.start(3000, './'); 
 ```
-That's it! Your server should be running!
+Run your JavaScript file with node.js and that's it!! You now have an HTTP server running on port 3000 that's hosting all files in the current directory. 
 
-# GLURP METHODS
+## glurp METHODS
 
-# glurp.set(method, route, callback) 
-Binds a callback function to a route for a get request at '/', responds with a file from the desgnated directory.
-```javascript
-Router.prototype.set = function(method, route, cb) {
-  if (!this.routes[method]) throw method + ' is not a valid HTTP method.';
-  this.routes[method][route] = cb;
-};
-```
-# glurp.start(port, publicDirectory)
-Automates starting a server with a specified port and reference directory. (See example above "Getting Started with Glurp")
+### glurp.set(method, route, callback) 
+Binds a callback function to an HTTP request method and route.  Accepts strings for the first two arguments.
 
-# Request Object
-Uses same methods and properties as described in Node Docs.<br>
-<a href="https://nodejs.org/api/http.html#http_http_incomingmessage">Class: http.ClientRequest</a><br>
-Also includes:
-# req.data + string
-Responds with data received from a POST request.
+### glurp.start(port, publicDirectory)
+Starts an HTTP server with a specified port and directory for hosting static files. Accepts an integer and a string as arguments.
 
-# Response Object
-Uses same methods and properties as described in Node Docs.<br>
-<a href="https://nodejs.org/api/http.html#http_class_http_serverresponse">Class: http.ServerResponse</a><br>
-Also includes:
-# res.send(string) 
-Takes a string and responds with text.
-res.send automates writeHead, write and end for the user.
+## Request Object
+The glurp request object has the same methods and properties as the node.js <a href="https://nodejs.org/api/http.html#http_http_incomingmessage">http.IncomingMessage</a> class, in addition to the following:
 
-```javascript
-glurp.set('POST', '/testpost', function(req, res) { 
-  res.send("POST request received.  Data is " + req.data);
-});
+### req.data
+This property stores the data received from an HTTP request as a string.
 
-```
-# res.sendHTML(string)
-Takes a string and responds with one HTML file per callback.
+## Response Object
+The glurp response object has the same methods and properties as the node.js <a href="https://nodejs.org/api/http.html#http_class_http_serverresponse">http.ServerResponse</a> class, in addition to the following:
+### res.send(string) 
+Accepts a string and sends it to the client as plain text.  
 
-# res.sendFile(string)
+### res.sendHtml(string)
+Accepts a string and sends it to the client to be rendered as HTML. 
+
+### res.sendFile(string)
+Accepts a file name as a string and sends it to the server with the appropriate headers.  Glurp looks for the specified file in the location stated in glurp.start().
+
+##Sample glurp server
 
 ```javascript
+var glurp = require('glurp');
+
 glurp.set('GET', '/', function(req, res) {
-  res.sendFile('/index.html'); 
+	res.sendFile('/index.html'); //glurp will look in ./static for index.html
 });
 
+glurp.set('POST', '/testpost', function(req, res) {
+	res.send('Received data: ' + req.data);
+});
+
+glurp.set('GET', '/renderhtml', function(req, res) {
+	res.sendHtml('<h1>Look! This is <i>HTML</i></h1>');
+});
+
+glurp.start(3000, __dirname + '/static');
+
 ```
+
 
 
 
