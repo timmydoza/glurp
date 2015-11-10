@@ -1,6 +1,6 @@
 {
   "name": "glurp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An easy to use framework for creating quick and simple HTTP servers in node.js",
   "main": "index.js",
   "scripts": {
